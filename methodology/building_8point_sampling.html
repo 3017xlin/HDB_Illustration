@@ -1,0 +1,145 @@
+<style>
+@media (prefers-reduced-motion: no-preference) {
+  .g1 { opacity:0; animation: fi .4s ease forwards .6s }
+  .g2 { opacity:0; animation: fi .4s ease forwards 1.4s }
+  .g3 { opacity:0; animation: fi .4s ease forwards 2.2s }
+  .g4 { opacity:0; animation: fi .4s ease forwards 3.0s }
+  .lbl1 { opacity:0; animation: fi .3s ease forwards .8s }
+  .lbl2 { opacity:0; animation: fi .3s ease forwards 1.6s }
+  .lbl3 { opacity:0; animation: fi .3s ease forwards 2.4s }
+  .lbl4 { opacity:0; animation: fi .3s ease forwards 3.2s }
+}
+@keyframes fi { to { opacity:1 } }
+</style>
+<svg width="100%" viewBox="0 0 680 520" role="img">
+<title>8-point pressure sampling on an HDB building</title>
+<desc>Isometric building showing windward and leeward surface points with shell offsets at 0.5m, 2m, 3m</desc>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+</defs>
+
+<!-- Building faces -->
+<!-- Top face -->
+<polygon points="120,190 320,190 390,155 190,155" fill="#F1EFE8" stroke="var(--s)" stroke-width="0.5"/>
+<!-- Side face (right) -->
+<polygon points="320,420 390,385 390,155 320,190" fill="#D3D1C7" stroke="var(--s)" stroke-width="0.5"/>
+<!-- Front face (windward) - blue tint -->
+<polygon points="120,420 320,420 320,190 120,190" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.8"/>
+<!-- Back face hint (leeward) - orange tint, partially visible through top -->
+<line x1="190" y1="385" x2="190" y2="155" stroke="#993C1D" stroke-width="0.5" stroke-dasharray="4 3" opacity="0.5"/>
+<line x1="390" y1="385" x2="390" y2="155" stroke="#993C1D" stroke-width="0.5" opacity="0.3"/>
+
+<!-- Face labels -->
+<text class="th" x="220" y="215" text-anchor="middle" fill="#185FA5">Windward</text>
+<text class="ts" x="355" y="175" text-anchor="middle" fill="#993C1D">Leeward</text>
+
+<!-- Wind arrows -->
+<line x1="30" y1="280" x2="100" y2="280" stroke="#185FA5" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="30" y1="330" x2="100" y2="330" stroke="#185FA5" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="30" y1="380" x2="100" y2="380" stroke="#185FA5" stroke-width="2" marker-end="url(#arrow)"/>
+<text class="th" x="65" y="265" text-anchor="middle" fill="#185FA5">Wind</text>
+<text class="ts" x="65" y="400" text-anchor="middle" fill="#185FA5">(-Y dir)</text>
+
+<!-- Floor lines on front face (dashed) -->
+<line x1="120" y1="374" x2="320" y2="374" stroke="var(--s)" stroke-width="0.4" stroke-dasharray="3 3" opacity="0.4"/>
+<line x1="120" y1="328" x2="320" y2="328" stroke="var(--s)" stroke-width="0.4" stroke-dasharray="3 3" opacity="0.4"/>
+<line x1="120" y1="282" x2="320" y2="282" stroke="var(--s)" stroke-width="0.4" stroke-dasharray="3 3" opacity="0.4"/>
+<line x1="120" y1="236" x2="320" y2="236" stroke="var(--s)" stroke-width="0.4" stroke-dasharray="3 3" opacity="0.4"/>
+
+<!-- Floor labels (left side) -->
+<text class="ts" x="112" y="400" text-anchor="end" opacity="0.5">Floor 1</text>
+<text class="ts" x="112" y="354" text-anchor="end" opacity="0.5">Floor 2</text>
+<text class="ts" x="112" y="308" text-anchor="end" opacity="0.5">Floor 3</text>
+<text class="ts" x="112" y="262" text-anchor="end" opacity="0.5">Floor 4</text>
+<text class="ts" x="112" y="216" text-anchor="end" opacity="0.5">Floor 5</text>
+
+<!-- X-fraction lines on front face (vertical dashed) -->
+<line x1="160" y1="420" x2="160" y2="190" stroke="var(--s)" stroke-width="0.3" stroke-dasharray="2 4" opacity="0.25"/>
+<line x1="200" y1="420" x2="200" y2="190" stroke="var(--s)" stroke-width="0.3" stroke-dasharray="2 4" opacity="0.25"/>
+<line x1="240" y1="420" x2="240" y2="190" stroke="var(--s)" stroke-width="0.3" stroke-dasharray="2 4" opacity="0.25"/>
+<line x1="280" y1="420" x2="280" y2="190" stroke="var(--s)" stroke-width="0.3" stroke-dasharray="2 4" opacity="0.25"/>
+<text class="ts" x="220" y="440" text-anchor="middle" opacity="0.4">← 1/10 x-fractions →</text>
+
+<!-- ========== ANIMATED SAMPLING POINTS ========== -->
+
+<!-- GROUP 1: Windward surface point -->
+<g class="g1">
+<circle cx="200" cy="305" r="6" fill="#185FA5" stroke="white" stroke-width="1.5"/>
+</g>
+<g class="lbl1">
+<line x1="200" y1="305" x2="440" y2="420" stroke="var(--s)" stroke-width="0.5" stroke-dasharray="2 2" opacity="0.5"/>
+<circle cx="200" cy="305" r="2" fill="var(--s)"/>
+<rect x="438" y="405" width="200" height="34" rx="6" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text class="ts" x="538" y="418" text-anchor="middle" fill="#185FA5">① b_wind (surface)</text>
+<text class="ts" x="538" y="433" text-anchor="middle" fill="#185FA5">p from surface_fields</text>
+</g>
+
+<!-- GROUP 2: Windward shell points (3 dots + lines) -->
+<g class="g2">
+<line x1="200" y1="305" x2="154" y2="328" stroke="#185FA5" stroke-width="1" opacity="0.5"/>
+<circle cx="191" cy="309" r="4" fill="#85B7EB" stroke="#185FA5" stroke-width="0.8"/>
+<circle cx="169" cy="321" r="4" fill="#85B7EB" stroke="#185FA5" stroke-width="0.8"/>
+<circle cx="154" cy="328" r="4" fill="#85B7EB" stroke="#185FA5" stroke-width="0.8"/>
+</g>
+<g class="lbl2">
+<line x1="154" y1="328" x2="440" y2="460" stroke="var(--s)" stroke-width="0.5" stroke-dasharray="2 2" opacity="0.5"/>
+<rect x="438" y="445" width="220" height="34" rx="6" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text class="ts" x="548" y="458" text-anchor="middle" fill="#185FA5">② a₀.₅  a₂  a₃ (shell)</text>
+<text class="ts" x="548" y="473" text-anchor="middle" fill="#185FA5">IDW from volume_fields</text>
+</g>
+
+<!-- Offset distance labels near shell dots -->
+<g class="lbl2">
+<text class="ts" x="185" y="303" fill="#185FA5" opacity="0.7">0.5m</text>
+<text class="ts" x="155" y="317" fill="#185FA5" opacity="0.7">2m</text>
+<text class="ts" x="137" y="326" fill="#185FA5" opacity="0.7">3m</text>
+</g>
+
+<!-- GROUP 3: Leeward surface point -->
+<g class="g3">
+<circle cx="270" cy="270" r="6" fill="#993C1D" stroke="white" stroke-width="1.5"/>
+</g>
+<g class="lbl3">
+<line x1="270" y1="270" x2="440" y2="340" stroke="var(--s)" stroke-width="0.5" stroke-dasharray="2 2" opacity="0.5"/>
+<circle cx="270" cy="270" r="2" fill="var(--s)"/>
+<rect x="438" y="325" width="200" height="34" rx="6" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+<text class="ts" x="538" y="338" text-anchor="middle" fill="#993C1D">③ b_lee (surface)</text>
+<text class="ts" x="538" y="353" text-anchor="middle" fill="#993C1D">p from surface_fields</text>
+</g>
+
+<!-- GROUP 4: Leeward shell points -->
+<g class="g4">
+<line x1="270" y1="270" x2="316" y2="247" stroke="#993C1D" stroke-width="1" opacity="0.5"/>
+<circle cx="279" cy="266" r="4" fill="#F0997B" stroke="#993C1D" stroke-width="0.8"/>
+<circle cx="301" cy="254" r="4" fill="#F0997B" stroke="#993C1D" stroke-width="0.8"/>
+<circle cx="316" cy="247" r="4" fill="#F0997B" stroke="#993C1D" stroke-width="0.8"/>
+</g>
+<g class="lbl4">
+<line x1="316" y1="247" x2="440" y2="380" stroke="var(--s)" stroke-width="0.5" stroke-dasharray="2 2" opacity="0.5"/>
+<rect x="438" y="365" width="220" height="34" rx="6" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+<text class="ts" x="548" y="378" text-anchor="middle" fill="#993C1D">④ a₀.₅  a₂  a₃ (shell)</text>
+<text class="ts" x="548" y="393" text-anchor="middle" fill="#993C1D">IDW from volume_fields</text>
+</g>
+
+<g class="lbl4">
+<text class="ts" x="285" y="261" fill="#993C1D" opacity="0.7">0.5m</text>
+<text class="ts" x="307" y="249" fill="#993C1D" opacity="0.7">2m</text>
+<text class="ts" x="323" y="243" fill="#993C1D" opacity="0.7">3m</text>
+</g>
+
+<!-- Connecting dashed line between windward and leeward surface points -->
+<g class="lbl3">
+<line x1="200" y1="305" x2="270" y2="270" stroke="var(--s)" stroke-width="0.8" stroke-dasharray="4 3" opacity="0.3"/>
+<text class="ts" x="242" y="296" text-anchor="middle" opacity="0.4">thickness</text>
+</g>
+
+<!-- Title -->
+<text class="th" x="340" y="30" text-anchor="middle">8-point sampling per (floor, x-fraction) location</text>
+<text class="ts" x="340" y="50" text-anchor="middle">4 windward + 4 leeward = 8 pressure values per sample</text>
+
+<!-- Bottom summary -->
+<text class="ts" x="340" y="505" text-anchor="middle" opacity="0.6">Total samples = Σ buildings × floors_per_building × 10 x-fractions</text>
+
+</svg>
